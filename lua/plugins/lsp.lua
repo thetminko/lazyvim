@@ -25,8 +25,12 @@ return {
       },
       vtsls = {
         root_dir = get_root_dir,
+        autoUseWorkspaceTsdk = true,
         settings = {
           typescript = {
+            tsserver = {
+              maxTsServerMemory = 4096,
+            },
             inlayHints = {
               enumMemberValues = { enabled = true },
               functionLikeReturnTypes = { enabled = false },
