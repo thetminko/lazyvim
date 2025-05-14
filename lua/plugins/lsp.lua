@@ -1,6 +1,8 @@
 local get_root_dir = function(fname)
   local util = require("lspconfig.util")
-  return util.root_pattern(".git")(fname) or util.root_pattern("package.json", "tsconfig.json")(fname)
+  return util.root_pattern(".git")(fname)
+    or util.root_pattern("nx.json")(fname)
+    or util.root_pattern("package.json", "tsconfig.json")(fname)
 end
 
 return {
@@ -23,6 +25,18 @@ return {
           },
         },
       },
+      tailwindcss = {
+        root_dir = get_root_dir,
+        settings = {
+          tailwindCSS = {
+            experimental = {
+              ["apps/web/src/styles/app.css"] = "apps/web/src/**",
+              ["libs/app/web/src/styles/lib.css"] = "libs/app/web/src/**",
+              ["libs/core/web/src/styles/core.css"] = "libs/core/web/src/**",
+            },
+          },
+        },
+      },
       vtsls = {
         root_dir = get_root_dir,
         autoUseWorkspaceTsdk = true,
@@ -42,7 +56,7 @@ return {
             preferences = {
               includeCompletionsForModuleExports = true,
               includeCompletionsForImportStatements = false,
-              importModuleSpecifier = "non-relative",
+              importModuleSpecifier = "project-relative",
               preferTypeOnlyAutoImports = true,
             },
           },
