@@ -1,9 +1,10 @@
-local get_root_dir = function(fname)
-  local util = require("lspconfig.util")
-  return util.root_pattern(".git")(fname)
-    or util.root_pattern("nx.json")(fname)
-    or util.root_pattern("package.json", "tsconfig.json")(fname)
-end
+-- Modern root directory detection (LazyVim handles this automatically now)
+-- local get_root_dir = function(fname)
+--   local util = require("lspconfig.util")
+--   return util.root_pattern(".git")(fname)
+--     or util.root_pattern("nx.json")(fname)
+--     or util.root_pattern("package.json", "tsconfig.json")(fname)
+-- end
 
 return {
   "neovim/nvim-lspconfig",
@@ -15,7 +16,6 @@ return {
     },
     servers = {
       eslint = {
-        root_dir = get_root_dir,
         settings = {
           format = { enable = false },
           validate = "on",
@@ -26,7 +26,6 @@ return {
         },
       },
       tailwindcss = {
-        root_dir = get_root_dir,
         settings = {
           tailwindCSS = {
             experimental = {
@@ -38,7 +37,6 @@ return {
         },
       },
       vtsls = {
-        root_dir = get_root_dir,
         autoUseWorkspaceTsdk = true,
         settings = {
           typescript = {
