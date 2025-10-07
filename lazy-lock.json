@@ -9,6 +9,7 @@
   "conform.nvim": { "branch": "master", "commit": "9d859cbfbde7a1bd1770e7c97aef30ec5a237a71" },
   "copilot.lua": { "branch": "master", "commit": "30b98a4c25d6152c14084020f703b6d56e1f1122" },
   "dial.nvim": { "branch": "master", "commit": "f0404ec1f83a03f2c3457e60087c6331d1cbb83f" },
+  "emmet-vim": { "branch": "master", "commit": "e98397144982d1e75b20d94d55a82de3ec8f648d" },
   "flash.nvim": { "branch": "main", "commit": "b68bda044d68e4026c4e1ec6df3c5afd7eb8e341" },
   "friendly-snippets": { "branch": "main", "commit": "572f5660cf05f8cd8834e096d7b4c921ba18e175" },
   "gitsigns.nvim": { "branch": "main", "commit": "1ee5c1fd068c81f9dd06483e639c2aa4587dc197" },
