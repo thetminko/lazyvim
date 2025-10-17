@@ -25,11 +25,18 @@ return {
   {
     "olimorris/onedarkpro.nvim",
   },
-
+  {
+    "KijitoraFinch/nanode.nvim",
+    config = function()
+      require("nanode").setup({
+        transparent = true,
+      })
+    end,
+  },
   {
     "LazyVim/LazyVim",
     opts = {
-      colorscheme = "oxocarbon",
+      colorscheme = "nanode",
     },
   },
 }
