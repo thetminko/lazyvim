@@ -1,3 +1,5 @@
+local lspconfig = require("lspconfig")
+
 return {
   "neovim/nvim-lspconfig",
   opts = {
@@ -32,7 +34,7 @@ return {
         autoUseWorkspaceTsdk = true,
         settings = {
           typescript = {
-            tsserver = {
+            autoUseWorkspaceTsdkserver = {
               maxTsServerMemory = 4096,
             },
             inlayHints = {
@@ -46,7 +48,17 @@ return {
             preferences = {
               includeCompletionsForModuleExports = true,
               includeCompletionsForImportStatements = false,
-              importModuleSpecifier = "project-relative",
+              importModuleSpecifier = "non-relative",
+              importModuleSpecifierPreference = "non-relative",
+              preferTypeOnlyAutoImports = true,
+            },
+          },
+          javascript = {
+            preferences = {
+              includeCompletionsForModuleExports = true,
+              includeCompletionsForImportStatements = false,
+              importModuleSpecifier = "non-relative",
+              importModuleSpecifierPreference = "non-relative",
               preferTypeOnlyAutoImports = true,
             },
           },
