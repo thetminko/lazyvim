@@ -1,5 +1,3 @@
-local lspconfig = require("lspconfig")
-
 return {
   "neovim/nvim-lspconfig",
   opts = {
@@ -34,7 +32,7 @@ return {
         autoUseWorkspaceTsdk = true,
         settings = {
           typescript = {
-            autoUseWorkspaceTsdkserver = {
+            tsserver = {
               maxTsServerMemory = 4096,
             },
             inlayHints = {
