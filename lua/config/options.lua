@@ -13,4 +13,12 @@ vim.opt.spelllang = { "en" }
 
 -- Modern LazyVim options
 vim.g.snacks_animate = true
-vim.g.root_spec = { "lsp", { ".git", "package.json", "tsconfig.json" }, "cwd" }
+-- Detect root by nearest package.json first (per-package in monorepo), then git root, then lsp
+-- "lsp" first in a monorepo causes vtsls to root at the repo root and load all 20+ project references
+vim.g.root_spec = { { "package.json", "tsconfig.json" }, ".git", "lsp", "cwd" }
+
+-- Diagnostics: don't update while typing — wait until you stop
+vim.diagnostic.config({
+  update_in_insert = false,
+  severity_sort = true,
+})

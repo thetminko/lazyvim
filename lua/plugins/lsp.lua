@@ -9,12 +9,11 @@ return {
     servers = {
       eslint = {
         settings = {
-          format = { enable = false },
+          -- format: controlled by vim.g.lazyvim_eslint_auto_format = true in options.lua
+          -- LazyVim's eslint extra sets format = true (boolean); don't override with an object here.
           validate = "on",
-          codeActionOnSave = {
-            enable = true,
-            mode = "all",
-          },
+          -- codeActionOnSave: ESLint LSP v2 setting, ignored by ESLint v10 — removed.
+          -- workingDirectories = { mode = "auto" }: set by LazyVim's eslint extra, not overriding.
         },
       },
       tailwindcss = {
@@ -30,11 +29,20 @@ return {
       },
       vtsls = {
         autoUseWorkspaceTsdk = true,
+        -- Debounce: wait 500ms after typing stops before sending changes to tsserver
+        flags = { debounce_text_changes = 500 },
         settings = {
           typescript = {
             tsserver = {
-              maxTsServerMemory = 4096,
+              -- Increased from 4096 — 14k TS files need more headroom
+              maxTsServerMemory = 8192,
+              experimental = {
+                -- Don't eagerly type-check all open projects in background
+                enableProjectDiagnostics = false,
+              },
             },
+            -- Limit workspace symbol search to current project only (not all 20+ packages)
+            workspaceSymbols = { scope = "currentProject" },
             inlayHints = {
               enumMemberValues = { enabled = true },
               functionLikeReturnTypes = { enabled = false },
@@ -52,6 +60,7 @@ return {
             },
           },
           javascript = {
+            workspaceSymbols = { scope = "currentProject" },
             preferences = {
               includeCompletionsForModuleExports = true,
               includeCompletionsForImportStatements = false,
