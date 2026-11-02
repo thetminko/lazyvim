@@ -3,30 +3,9 @@ vim.opt.background = "dark"
 
 return {
   {
-    "nyoom-engineering/oxocarbon.nvim",
-    lazy = false,
-  },
-  {
-    "folke/tokyonight.nvim",
-    opts = {
-      transparent = true,
-      styles = {
-        sidebars = "transparent",
-        floats = "transparent",
-      },
-    },
-  },
-
-  {
-    "projekt0n/github-nvim-theme",
-    name = "github-theme",
-  },
-
-  {
-    "olimorris/onedarkpro.nvim",
-  },
-  {
     "KijitoraFinch/nanode.nvim",
+    lazy = false,
+    priority = 1000,
     config = function()
       require("nanode").setup({
         transparent = true,
@@ -35,8 +14,7 @@ return {
   },
   {
     "LazyVim/LazyVim",
-    opts = {
-      colorscheme = "nanode",
-    },
+    opts = { colorscheme = "nanode" },
   },
+  { "folke/tokyonight.nvim", lazy = true, opts = { transparent = true } },
 }

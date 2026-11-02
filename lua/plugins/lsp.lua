@@ -2,9 +2,7 @@ return {
   "neovim/nvim-lspconfig",
   opts = {
     diagnostics = {
-      virtual_text = {
-        spacing = 2,
-      },
+      virtual_text = { spacing = 2 },
     },
     servers = {
       eslint = {
@@ -19,11 +17,7 @@ return {
       tailwindcss = {
         settings = {
           tailwindCSS = {
-            experimental = {
-              ["apps/web/src/styles/app.css"] = "apps/web/src/**",
-              ["libs/app/web/src/styles/lib.css"] = "libs/app/web/src/**",
-              ["libs/core/web/src/styles/core.css"] = "libs/core/web/src/**",
-            },
+            classFunctions = { "cn", "cva", "tv" },
           },
         },
       },
@@ -63,10 +57,8 @@ return {
             workspaceSymbols = { scope = "currentProject" },
             preferences = {
               includeCompletionsForModuleExports = true,
-              includeCompletionsForImportStatements = false,
               importModuleSpecifier = "non-relative",
               importModuleSpecifierPreference = "non-relative",
-              preferTypeOnlyAutoImports = true,
             },
           },
         },
